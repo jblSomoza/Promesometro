@@ -1,0 +1,113 @@
+<ion-header no-border>
+    <ion-toolbar color="primary">
+  
+        <ion-button slot="start">
+            <ion-back-button defaultHref="/candidatos"></ion-back-button>
+          </ion-button>
+  
+  
+        <ion-title>
+            Promesas
+        </ion-title>
+        <ion-button slot="end" *ngIf="identity"  (click)="addPromosa()">
+            
+          <ion-icon name="add-circle-outline" slot="icon-only" size="" ></ion-icon>
+          
+
+      </ion-button>
+         
+        
+       
+  
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content>
+
+    <ion-slides class="mainSlide" #slidePrincipal >
+
+        <ion-slide >
+          <form >
+              <ion-grid fixed>
+
+                  
+
+                  <ion-card *ngFor="let enc of datos" color="light">
+                      
+                      
+                      <ion-card-header >
+                          <ion-card-title> {{enc.titulo}}  </ion-card-title>
+                          <ion-card-subtitle> {{enc.descripcion}}</ion-card-subtitle>
+                         
+                      </ion-card-header>
+                     
+                      {{enc.si}} <ion-icon name="happy"></ion-icon>
+                     <!--  {{enc.promedio1}}% -->
+                          <ion-item color="light">
+                            <ion-progress-bar color="success"  pin="true" value="{{enc.promedio1}}"></ion-progress-bar>
+                            
+                          </ion-item>
+                          {{enc.no}} <ion-icon name="sad"></ion-icon>
+                       <!--   {{enc.promedio2}}% -->
+                          <ion-item color="light">
+                              <ion-progress-bar color="danger" pin="true" value="{{enc.promedio2}}"></ion-progress-bar>
+                            </ion-item>
+
+                      
+                      <ion-card>
+                          <ion-button type="submit" color="tertiary" shape="round" (click)="voto = true; promesaVotada(enc._id, 1,0)" >
+                              <ion-icon name="checkmark"></ion-icon>
+                          </ion-button>
+                          ---Votar---
+                          <ion-button type="submit" color="tertiary" shape="round" (click)="voto = false; promesaVotada(enc._id,0 ,1)">
+                              <ion-icon name="close"></ion-icon>
+                          </ion-button>
+                         
+                         
+                          
+                          
+                      </ion-card>
+                    
+                  </ion-card>
+              </ion-grid>
+          </form>
+
+
+
+
+      </ion-slide>
+      <ion-slide>
+          <ion-row>
+              <ion-col>
+      
+                  <ion-list>
+                      <ion-item>
+                          <ion-label>Nombre</ion-label>
+                          <ion-input type="text" required name="nombre" [(ngModel)]="datoModel.titulo" ></ion-input>
+                      </ion-item>
+                      <ion-item>
+                          <ion-label>Descripción</ion-label>
+                          <ion-input type="text" required  name="descripcion" [(ngModel)]="datoModel.descripcion"></ion-input>
+                      </ion-item>
+                      
+                  </ion-list>
+                  <ion-row>
+                      <ion-col>
+                          <ion-list>
+                          <ion-button type="submit" color="tertiary" shape="round" (click)="addDato(); mostrarRegistro()">
+                              Guardar
+                          </ion-button>
+                          </ion-list>
+                      </ion-col>
+                  </ion-row>
+              </ion-col>
+             
+          </ion-row>
+          
+      </ion-slide>
+      
+  </ion-slides>
+
+
+
+</ion-content>

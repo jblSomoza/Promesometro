@@ -1,0 +1,11 @@
+[
+    {
+        "name": "Partido",
+        "redirectTo": "/partido"
+    },
+    {
+        "name": "Salir",
+        "redirectTo": "/registrar"
+    }
+
+]
